@@ -1,0 +1,25 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+tr {
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2); }
+
+td {
+  padding: 10px 0px 10px 0px;
+  text-align: center; }
+
+th {
+  padding-left: 10px;
+  margin-right: 10px; }
+
+table {
+  float: left; }
+
+.shell {
+  background-color: black; }
+
+/*# sourceMappingURL=style.css.map */

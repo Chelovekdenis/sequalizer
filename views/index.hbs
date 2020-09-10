@@ -1,0 +1,32 @@
+<h1>Список пользователей</h1>
+<p><a href="/create">Добавить пользователя</a></p>
+<table>
+    <tr><th>Name</th><th>Prise</th><th>CompanyID</th><th></th></tr>
+    {{#each users}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.prise}}</td>
+            <td>{{this.companyId}}</td>
+            <td>
+                <a href="/edit/{{this.id}}">Edit</a>|
+                <form action="delete/{{this.id}}" method="POST" style="display:inline;">
+                    <input type="submit" value="Delete" />
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
+<table style="margin-left: 20px;">
+    <tr><th>Id</th><th>Name</th><th></th></tr>
+    {{#each companies}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.name}}</td>
+            <td>
+                <form action="delete/company/{{this.id}}" method="POST" style="display:inline;">
+                    <input type="submit" value="Delete" />
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
