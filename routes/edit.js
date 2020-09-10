@@ -2,9 +2,10 @@ const express = require('express')
 const router = express.Router()
 const model = require('./sequelizer')
 
+
 router.get("/:id", (req, res) => {
-    const userid = req.params.id
-    model.User.findAll({where:{id: userid}, raw: true })
+    const productId = req.params.id
+    model.Product.findAll({where:{id: productId}, raw: true })
         .then(data=>{
             res.render("edit.hbs", {
                 user: data[0]
@@ -17,11 +18,11 @@ router.post("/",  (req, res) => {
 
     if(!req.body) return res.sendStatus(400)
 
-    const userName = req.body.name
-    const userAge = req.body.age
-    const userId = req.body.id
+    const productName = req.body.name
+    const productAge = req.body.age
+    const productId = req.body.id
 
-    model.User.update({name:userName, prise: userAge}, {where: {id: userId} })
+    model.Product.update({name:productName, prise: productAge}, {where: {id: productId} })
         .then(() => {
             res.redirect("/")})
         .catch(err=>console.log(err))

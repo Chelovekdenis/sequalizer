@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 const model = require('./sequelizer')
 
-
+// просто выводит форму для создания, но к тому же находит
+// все компании в БД, чтобы придоставить список на выбор
 router.get("/", (req, res) => {
     model.Company.findAll({raw: true})
         .then(data=>{
@@ -18,10 +19,10 @@ router.post("/", (req, res) => {
 
     if(!req.body) return res.sendStatus(400)
 
-    const userName = req.body.name
-    const userAge = req.body.age
+    const productName = req.body.name
+    const productAge = req.body.age
     const CompanyId = req.body.companyId
-    model.User.create({ name: userName, prise: userAge, companyId: CompanyId})
+    model.Product.create({ name: productName, prise: productAge, companyId: CompanyId})
         .then(()=>{
             res.redirect("/")})
         .catch(err=>console.log(err))

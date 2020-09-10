@@ -2,15 +2,17 @@ const express = require('express')
 const router = express.Router()
 const model = require('./sequelizer')
 
+// удаление продукта
 router.post("/:id", (req, res) => {
-    const userid = req.params.id
+    const productId = req.params.id
 
-    model.User.destroy({where: {id: userid} })
+    model.Product.destroy({where: {id: productId} })
         .then(() => {
             res.redirect("/")})
         .catch(err=>console.log(err))
 })
 
+// удаление компании
 router.post("/company/:id", (req, res) => {
     const companyId = req.params.id
 
