@@ -1,21 +1,26 @@
 const express = require('express')
 const router = express.Router()
-const model = require('./sequelizer')
+const model = require('../models/sequelizer')
 
 router.get("/", (req, res) => {
-    console.log()
-    model.Product.findAll({raw: true})
-      .then(data_users=>{
-          model.Company.findAll({raw: true})
-              .then(data_companies=>{
-                  // console.log(data.concat(data2))
-                res.render("index.hbs", {
-                    users: data_users,
-                    companies: data_companies
-              })})
-              .catch(err=>console.log(err))
-      })
-      .catch(err=>console.log(err))
+        model.Product.findAll({raw: true})
+            .then(data_users => {
+
+                if (req.isAuthenticated() && req.user.username === "admin")
+                    model.Company.findAll({raw: true})
+                        .then(data_companies => {
+                            res.render("index.hbs", {
+                                users: data_users,
+                                companies: data_companies
+                            })
+                        })
+                        .catch(err => console.log(err))
+                else
+                    res.render("index.hbs", {
+                        users: data_users
+                    })
+            })
+            .catch(err => console.log(err))
 })
 
 module.exports = router

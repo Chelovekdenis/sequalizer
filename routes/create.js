@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const model = require('./sequelizer')
+const model = require('../models/sequelizer')
 
 // просто выводит форму для создания, но к тому же находит
 // все компании в БД, чтобы придоставить список на выбор
@@ -11,18 +11,15 @@ router.get("/", (req, res) => {
                 companies: data
             })})
         .catch(err=>console.log(err))
-    // res.render("create.hbs")
 })
 
 // добавление данных
 router.post("/", (req, res) => {
-
     if(!req.body) return res.sendStatus(400)
 
-    const productName = req.body.name
-    const productAge = req.body.age
-    const CompanyId = req.body.companyId
-    model.Product.create({ name: productName, prise: productAge, companyId: CompanyId})
+    const { name, age, companyId } = req.body
+
+    model.Product.create({ name: name, prise: age, companyId: companyId})
         .then(()=>{
             res.redirect("/")})
         .catch(err=>console.log(err))

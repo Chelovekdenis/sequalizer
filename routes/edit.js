@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const model = require('./sequelizer')
+const model = require('../models/sequelizer')
 
 
 router.get("/:id", (req, res) => {
     const productId = req.params.id
+
     model.Product.findAll({where:{id: productId}, raw: true })
         .then(data=>{
             res.render("edit.hbs", {
@@ -15,14 +16,11 @@ router.get("/:id", (req, res) => {
 
 // обновление данных в БД
 router.post("/",  (req, res) => {
+    if (!req.body) return res.sendStatus(400)
 
-    if(!req.body) return res.sendStatus(400)
+    const { name, age, id } = req.body
 
-    const productName = req.body.name
-    const productAge = req.body.age
-    const productId = req.body.id
-
-    model.Product.update({name:productName, prise: productAge}, {where: {id: productId} })
+    model.Product.update({name:name, prise: age}, {where: {id: id} })
         .then(() => {
             res.redirect("/")})
         .catch(err=>console.log(err))

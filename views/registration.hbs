@@ -1,0 +1,53 @@
+
+
+<br>
+<div class="title">registration</div>
+<form action="/registration" method="post">
+    <div class="input">
+        <label for="name">Login</label>
+        <input type="text" name="username" id="name">
+        <span class="spin"></span>
+    </div>
+
+    <div class="input">
+        <label for="pass">Password</label>
+        <input type="password" name="password" id="pass">
+        <span class="spin"></span>
+    </div>
+
+    <div class="input">
+        <label for="pass2">Confirm password</label>
+        <input type="password" name="password2" id="pass2">
+        <span class="spin"></span>
+    </div>
+
+    <div class="button login">
+        <button><span>Create Account</span> <i class="fa fa-check"></i></button>
+    </div>
+</form>
+
+{{#each errors}}
+    {{this.msg}}
+{{/each}}
+
+<!--<input type = "text" id = "username"></br>-->
+<!--<input type = "password" id = "pass1"></br>-->
+<!--<input type = "password" id = "pass2"></br>-->
+
+<!--<button onClick = "check()">Проверить</button>-->
+<!--<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>-->
+<!--<script>-->
+<!--    function check(){-->
+<!--        let data = {-->
+<!--            username: $("#username").val(),-->
+<!--            password: $("#pass1").val()-->
+<!--        }-->
+<!--        if(data.password === $("#pass2").val() != '') {-->
+<!--            $.post('/registration', data, (req) => {-->
+<!--                if(req.code === 123) alert('Логин занят ' + req.code)-->
+<!--            })-->
+<!--        } else {-->
+<!--            alert('Пароли неверны')-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
