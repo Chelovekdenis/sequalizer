@@ -1,5 +1,4 @@
 const Sequelize = require("sequelize")
-
 const dbInfo = require('../config/database').dbInfo
 
 const sequelize = new Sequelize(...dbInfo, {
@@ -10,53 +9,11 @@ const sequelize = new Sequelize(...dbInfo, {
     }
 })
 
-const Product = sequelize.define("product", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
-    },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    prise: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    }
-})
+const Product = require("./Product")(sequelize)
+const Company = require("./Company")(sequelize)
+const User = require("./User")(sequelize)
 
-const Company = sequelize.define("company", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
-    },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
-})
 Company.hasMany(Product, {onDelete: "cascade"})
-
-const User = sequelize.define("user", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    password: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
-})
 
 // !!! Убрать force: true, если не нужно создавать всегда заного базу данных
 // sequelize.sync({force: true}).then(()=>{
@@ -90,8 +47,6 @@ const User = sequelize.define("user", {
 // }).catch(err=>console.log(err))
 
 
-
-// module.exports.sequelize = sequelize
 module.exports.Product = Product
 module.exports.Company = Company
 module.exports.User = User
