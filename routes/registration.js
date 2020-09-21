@@ -1,4 +1,5 @@
 const express = require('express')
+const bcrypt = require('bcrypt')
 const router = express.Router()
 const model = require('../models/sequelizer')
 
@@ -25,14 +26,20 @@ router.post('/', (req, res) => {
     else
         model.User.findOne({where: {username: username}})
             .then(user => {
-                if(user)
-                    res.redirect("/login")
-                else
-                    model.User.create({ username: username, password: password})
-                        .then(()=>{
-                            res.redirect("/login")
+                if(user) {
+                    errors.push({msg: 'Login already exists'})
+                    res.render('registration', {
+                        errors: errors
+                    })
+                } else
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(password, salt, (err, hash) => {
+                            if (err) throw err
+                            model.User.create({ username: username, password: hash})
+                                .then(() => res.redirect("/login"))
+                                .catch(err=>console.log(err))
                         })
-                        .catch(err=>console.log(err))
+                    })
             }).catch(e => console.log(e))
 })
 

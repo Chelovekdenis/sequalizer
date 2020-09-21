@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize")
-const dbInfo = require('../config/database').dbInfo
+const {database, username, password} = require('../config/database')
 
-const sequelize = new Sequelize(...dbInfo, {
+const sequelize = new Sequelize(database, username, password, {
     dialect: "mysql",
     host: "localhost",
     define: {
