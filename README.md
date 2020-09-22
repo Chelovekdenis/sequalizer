@@ -1,7 +1,5 @@
 # Sequelizer
 
----
-
 This is a portfolio project to show you how and what I use. It is Rest API with CRUD, authentication and use of template engines.
 
 ### Tech Stack
