@@ -20,6 +20,8 @@ const dashboardRouter = require('./routes/dashboard')
 
 const app = express()
 
+const {sessionSecret} = require('./config/config')
+
 require('./config/passport')(passport)
 
 // view engine setup
@@ -44,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(
     session({
-        secret: 'W$q4=25*8%v-}BV',
+        secret: sessionSecret,
         resave: true,
         saveUninitialized: true
     })
