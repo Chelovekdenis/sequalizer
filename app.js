@@ -10,13 +10,13 @@ const session = require('express-session')
 const passport = require('passport')
 
 const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
 const createRouter = require('./routes/create')
 const editRouter = require('./routes/edit')
 const deleteRouter = require('./routes/delete')
 const loginRouter = require('./routes/login')
 const registrationRouter = require('./routes/registration')
 const dashboardRouter = require('./routes/dashboard')
+const chatRouter = require('./routes/chat')
 
 const app = express()
 
@@ -65,13 +65,13 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
 app.use('/create', createRouter)
 app.use('/edit', editRouter)
 app.use('/delete', deleteRouter)
 app.use('/login', loginRouter)
 app.use('/registration', registrationRouter)
 app.use('/dashboard', dashboardRouter)
+app.use('/chat', chatRouter)
 
 
 // catch 404 and forward to error handler

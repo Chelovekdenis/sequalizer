@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const model = require('../models/sequelizer')
+const model = require('../services/sequelizer')
 
 // удаление продукта
 router.post("/:id", (req, res) => {

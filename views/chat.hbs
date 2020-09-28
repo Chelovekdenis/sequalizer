@@ -1,0 +1,79 @@
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font: 13px Helvetica, Arial; }
+    form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+    form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
+    form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+    #messages { list-style-type: none; margin: 0; padding: 0; }
+    #messages li { padding: 5px 10px; }
+    #messages li:nth-child(odd) { background: #eee; }
+</style>
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<h1 id="MY_NAME">{{name}} | {{companion}}</h1>
+
+
+<ul id="messages"></ul>
+<form action="">
+    <input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+<script>
+    $(() => {
+        let user_data = ""
+        // const socket = io.connect("http://localhost:3000")
+        const socket = io()
+
+        let m = $('#m')
+        let messages = $('#messages')
+
+
+        async function takeInfo() {
+            let privet = await fetch('/chat/get')
+            user_data = await privet.json()
+
+            socket.emit('login', user_data)
+
+            await socket.on('restoration messages', (chat_history) => {
+                for (const item of chat_history.messages) {
+                    if (user_data.name === item.name) {
+                        messages.append($('<li style="padding-left: 50%; color: red">')
+                                .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
+                    } else
+                        messages.append($('<li>')
+                                .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
+
+                }
+            })
+        }
+
+        takeInfo()
+
+        $('form').on("submit", (e) => {
+            e.preventDefault() // prevents page reloading
+
+            let date = new Date()
+
+            let msg = {
+                name: user_data.name,
+                text: m.val(),
+                time: `${date.getHours()}:${date.getMinutes()}`,
+                date: `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+            }
+
+            messages.append($('<li style="padding-left: 50%; color: red">')
+                    .text(`${msg.name}: ${msg.text}---${msg.time}---${msg.date}`))
+
+            socket.emit('chat message', msg)
+            m.val('')
+            return false
+        })
+
+        socket.on('chat message client', (msg) => {
+            messages.append($('<li>')
+                    .text(`${msg.name}: ${msg.text}---${msg.time}---${msg.date}`))
+        })
+    })
+</script>

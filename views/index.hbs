@@ -1,4 +1,7 @@
 <h1>Список пользователей</h1>
+{{#if admin}}
+    {{admin}} {{admin}} {{admin}}
+{{/if}}
 <button id="button_add"><a id="a_add" href="/create">Добавить пользователя</a></button>
 <table>
     <tr><th>Name</th><th>Prise</th><th>CompanyID</th><th></th></tr>
@@ -8,10 +11,12 @@
             <td>{{this.prise}}</td>
             <td>{{this.companyId}}</td>
             <td>
-                <a href="/edit/{{this.id}}">Edit</a>|
-                <form action="delete/{{this.id}}" method="POST" style="display:inline;">
-                    <input type="submit" value="Delete" />
-                </form>
+            {{#if ../admin}}
+            <a href="/edit/{{this.id}}">Edit</a>|
+            <form action="delete/{{this.id}}" method="POST" style="display:inline;">
+                <input type="submit" value="Delete" />
+            </form>
+            {{/if}}
             </td>
         </tr>
     {{/each}}
@@ -25,9 +30,11 @@
             <td>{{this.id}}</td>
             <td>{{this.name}}</td>
             <td>
+            {{#if ../admin}}
                 <form action="delete/company/{{this.id}}" method="POST" style="display:inline;">
                     <input type="submit" value="Delete" />
                 </form>
+            {{/if}}
             </td>
         </tr>
     {{/each}}

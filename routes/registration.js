@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const router = express.Router()
-const model = require('../models/sequelizer')
+const model = require('../services/sequelizer')
 
 const { forwardAuthenticated } = require('../config/auth')
 
@@ -9,7 +9,7 @@ router.get("/", forwardAuthenticated, (req, res) => {
     res.render('registration')
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const { username, password, password2 } = req.body
     let errors = []
 
@@ -23,24 +23,26 @@ router.post('/', (req, res) => {
         res.render('registration', {
             errors: errors
         })
-    else
-        model.User.findOne({where: {username: username}})
-            .then(user => {
-                if(user) {
-                    errors.push({msg: 'Login already exists'})
-                    res.render('registration', {
-                        errors: errors
-                    })
-                } else
-                    bcrypt.genSalt(10, (err, salt) => {
-                        bcrypt.hash(password, salt, (err, hash) => {
-                            if (err) throw err
-                            model.User.create({ username: username, password: hash})
-                                .then(() => res.redirect("/login"))
-                                .catch(err=>console.log(err))
-                        })
-                    })
-            }).catch(e => console.log(e))
+
+    else {
+        const user = await model.User.findOne({where: {username: username}})
+        if(user) {
+            errors.push({msg: 'Login already exists'})
+            res.render('registration', {
+                errors: errors
+            })
+        }
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(password, salt, async (err, hash) => {
+                if (err) throw err
+
+                await model.User.create({
+                    username: username, password: hash
+                })
+                res.redirect("/login")
+            })
+        })
+    }
 })
 
 
