@@ -6,7 +6,11 @@ const model = require('../services/sequelizer')
 const { forwardAuthenticated } = require('../config/auth')
 
 router.get("/", forwardAuthenticated, (req, res) => {
-    res.render('registration')
+    res.render('registration', {
+        whichPartial: () => {
+            return "header"
+        }
+    })
 })
 
 router.post('/', async (req, res) => {
@@ -29,7 +33,10 @@ router.post('/', async (req, res) => {
         if(user) {
             errors.push({msg: 'Login already exists'})
             res.render('registration', {
-                errors: errors
+                errors: errors,
+                whichPartial: () => {
+                    return "header"
+                }
             })
         }
         bcrypt.genSalt(10, (err, salt) => {

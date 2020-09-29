@@ -6,9 +6,9 @@ const model = require('../services/sequelizer')
 const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 
+router.use(ensureAuthenticated)
 
-router.get("/", ensureAuthenticated, async (req, res) => {
-
+router.get("/", async (req, res) => {
     let user = await model.User.findOne({where: {username: req.user.username}})
     let chats = await model.Relation.findAll({where: {userId: user.id}, raw: true})
 
@@ -25,7 +25,8 @@ router.get("/", ensureAuthenticated, async (req, res) => {
                 }
             }
         })
-        let companion_name = await model.User.findOne({where: {id: companion.userId}})
+        let companion_name = await model.User
+            .findOne({where: {id: companion.userId}})
         let companionObj = {
             id: companion_name.id,
             username: companion_name.username,
@@ -50,13 +51,16 @@ router.get("/", ensureAuthenticated, async (req, res) => {
 
     res.render('chats_list', {
         companions: companion_list,
-        users: users_list
+        users: users_list,
+        username: req.user.username,
+        whichPartial: () => {
+            return "header_authenticated"
+        }
     })
 })
 
 
-router.get("/new_chat/:id", ensureAuthenticated, async (req, res) => {
-
+router.get("/new_chat/:id", async (req, res) => {
     const companion = await model.User.findOne({where: {id: req.params.id}})
     const user = await model.User.findOne({where: {username: req.user.username}})
 
@@ -81,19 +85,23 @@ router.get("/new_chat/:id", ensureAuthenticated, async (req, res) => {
 let CHAT_ID = null
 
 
-router.get("/:id.:chatId", ensureAuthenticated, async (req, res) => {
+router.get("/:id.:chatId", async (req, res) => {
     const companion = await model.User.findOne({where: {id: req.params.id}})
     CHAT_ID = req.params.chatId
     res.render('chat', {
         name: req.user.username,
         companion: companion.username,
-        chatId: req.params.chatId
+        chatId: req.params.chatId,
+        username: req.user.username,
+        whichPartial: () => {
+            return "header_authenticated"
+        }
     })
 
 })
 
 
-router.get("/get", ensureAuthenticated, (req, res) => {
+router.get("/get", (req, res) => {
     res.json({
         name: req.user.username,
         chatId: CHAT_ID

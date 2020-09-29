@@ -9,7 +9,10 @@ router.get("/:id", (req, res) => {
     model.Product.findAll({where:{id: productId}, raw: true })
         .then(data=>{
             res.render("edit.hbs", {
-                user: data[0]
+                user: data[0],
+                whichPartial: () => {
+                    return "header"
+                }
             })})
         .catch(err=>console.log(err))
 })

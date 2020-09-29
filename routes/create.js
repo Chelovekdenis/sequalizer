@@ -7,19 +7,25 @@ const model = require('../services/sequelizer')
 router.get("/", async (req, res) => {
     const data = await model.Company.findAll({raw: true})
     res.render("create.hbs", {
-        companies: data
+        companies: data,
+        whichPartial: () => {
+            return "header"
+        }
     })
 
 })
 
 // добавление данных
 router.post("/", async (req, res) => {
-    if(!req.body) return res.sendStatus(400)
     const { name, age, companyId } = req.body
-    await model.Product.create({
-        name: name, prise: age, companyId: companyId
-    })
-    res.redirect("/")
+    if (!name || !age || !companyId)
+        res.redirect("/create")
+    else {
+        await model.Product.create({
+            name: name, prise: age, companyId: companyId
+        })
+        res.redirect("/")
+    }
 })
 
 module.exports = router

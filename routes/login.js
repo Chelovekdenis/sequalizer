@@ -4,7 +4,11 @@ const passport = require('passport')
 const { forwardAuthenticated } = require('../config/auth')
 
 router.get("/", forwardAuthenticated, (req, res) => {
-    res.render('login')
+    res.render('login', {
+        whichPartial: () => {
+            return "header"
+        }
+    })
 })
 
 router.get('/logout', (req, res) => {
