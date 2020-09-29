@@ -25,7 +25,10 @@ router.post('/', async (req, res) => {
 
     if (errors.length > 0)
         res.render('registration', {
-            errors: errors
+            errors: errors,
+            whichPartial: () => {
+                return "header"
+            }
         })
 
     else {

@@ -18,8 +18,8 @@ const Relation = require("../models/Relation")(sequelize)
 
 Company.hasMany(Product, {onDelete: "cascade"})
 
-User.belongsToMany(Chat, {through: Relation});
-Chat.belongsToMany(User, {through: Relation});
+User.belongsToMany(Chat, {through: Relation})
+Chat.belongsToMany(User, {through: Relation})
 
 module.exports.Product = Product
 module.exports.Company = Company

@@ -1,10 +1,11 @@
 
 body, html
   padding: 0
-  margin: 1em
+  margin: 0
   color: #171717
   font-family: Roboto, serif
   background: #f5f5f5
+  height: 100%
   //#cccccc
 
   /*----------------HEADER----------------*/
@@ -13,6 +14,12 @@ body, html
     text-decoration: none
 
   header
+    position: fixed
+    width: 98%
+    top: 20px
+    left: 20px
+    right: 100px
+    z-index: 50
     box-shadow: 0 1px 6px rgba(0, 0, 0, .3)
 
   #header *
@@ -56,71 +63,36 @@ body, html
   #header_ul
     margin: 0
 
-  h2 a
-    color: #00D09D
-    font-size: 32px
-    letter-spacing: -2px
-    verticle-align: 70px
-
-
-  h2 span
-    letter-spacing: -12px
-
-  nav
+  #header_nav
     float: right
 
 
-  nav a
+  #header_nav a
     color: #f5f5f5
     top: 0
     padding: 22px 16px 18px
-    border-bottom: solid 0 #00D09D
+    //border-bottom: solid 0 #fff
     transition: all .2s
 
 
-  nav a:hover
-    border-bottom: solid 4px #00D09D
-    padding: 22px 16px 18px
+  #header_nav a:hover
+    color: darkgray
 
 
-  nav li
+  #header_nav li
     text-transform: uppercase
     font-size: 14px
     font-weight: bold
     letter-spacing: 1px
 
 
-  #header menu
-    width: 90px
-    text-align: right
-
-
-  header #header menu a
-    background: #00D09D
-    height: 60px
-    width: 60px
-    padding: 0
-    border-radius: 100%
-    text-align: center
-    line-height: 60px
-    position: relative
-    top: 35px
-    color: #f5f5f5
-    font-size: 26px
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.30)
-    transition: box-shadow .2s
-
-
-  header #header menu a:hover
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.50)
-
-
-  /*----------------HEADER----------------*/
+  /*----------------LOGIN----------------*/
 
   .materialContainer
-    margin: 10px auto
+    position: relative
+    top: 100px
+    margin: 0 auto
     width: 60%
-    //background-color: bisque
 
   .login_box
     margin: 0 auto
@@ -194,6 +166,7 @@ body, html
     overflow: hidden
     letter-spacing: 2px
     padding: 6px 12px
+    font-size: 14px
 
   .common_btn_a
     text-decoration: none
@@ -205,44 +178,103 @@ body, html
     overflow: hidden
     letter-spacing: 2px
 
+  .div_box
+    height: 1000px
+    width: 500px
 
 
-//body
-//  padding: 50px
-//  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-//
-//a
-//  color: #00B7FF
-//
-//tr
-//  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2)
-//
-//td
-//  padding: 10px 0px 10px 0px
-//  text-align: center
-//
-//th
-//  padding-left: 10px
-//  margin-right: 10px
-//
-//table
-//  float: left
-//
-//.shell
-//  background-color: black
-//
-//#button_add
-//  padding: .5em
-//  margin-bottom: 20px
-//  display: block
-//  background-image: linear-gradient(#3b2751, #271739)
-//  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2)
-//
-//#a_add
-//  padding: 0.7em 1.4em 0.7em 1.4em
-//  text-decoration: none
-//  color: white
-//  font-size: 16px
-//
+  /*----------------REGISTRATION----------------*/
+
+  .section_title
+    text-transform: uppercase
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+    font-size: 34px
+    color: #ffffff
+    margin-bottom: 30px
+    font-weight: 200
+    letter-spacing: 2px
+
+  .registration_box
+    margin: 0 auto
+    max-width: 700px
+    flex-direction: row
+    box-shadow: 3px 6px 10px rgba(0, 0, 0.1, 0.20)
+    padding: 14px
+    font-size: 14px
+    border-radius: 3px
+    background: #202020
+    color: #f5f5f5
+
+  .registration_box form input
+    background-color: rgba( 0, 0, 0, 0.2 )
+    color: #fff
+    border: 1px solid #000
+    border-radius: 3px
+    box-shadow: 1px 1px 0 #5f5f5f
+    width: 300px
+    padding: 5px
+    margin: 4px 0
+    font-size: 16px
+
+  /*----------------CHAT----------------*/
+
+  .container
+    position: relative
+    top: 100px
+    margin: 0 auto
+    height: 80%
+
+  .chat_container
+    height: 100%
+    width: 550px
+    margin: 0 auto
+    background-color: #202020
+    color: #f5f5f5
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .3)
+    border-radius: 4px
+
+  .chat_form
+    width: 510px
+    position: absolute
+    bottom: 0
+    padding: 10px 0
+    margin: 0 20px
+    border-top: 1px solid #f5f5f5
+
+  .chat_form input
+    background-color: rgba( 0, 0, 0, 0.2 )
+    color: #fff
+    border: 1px solid #000
+    border-radius: 3px
+    box-shadow: 1px 1px 0 #5f5f5f
+    width: 88%
+    padding: 5px
+    margin: 4px 0
+    font-size: 16px
+    float: left
+
+  .chat_form button
+    float: right
+
+  .button_send
+    margin: 0
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    border: 2px solid #f5f5f5
+
+  .button_send i
+    color: white
+    font-size: 30px
 
 
+  .button_send i:hover
+    color: darkgray
+
+  #MY_NAME
+    text-align: center
+    border-bottom: 1px solid #f5f5f5
+    margin: 0 20px
+
+  #messages
+    list-style-type: none

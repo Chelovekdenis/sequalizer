@@ -1,28 +1,29 @@
-<br>
-<div class="title">registration</div>
-<form action="/registration" method="post">
-    <div class="input">
-        <label for="name">Login</label>
-        <input type="text" name="username" id="name">
-        <span class="spin"></span>
-    </div>
+<div class="materialContainer">
+    <div class="registration_box">
+        <div class="section_title">Create Your Account</div>
+        <form action="/registration" method="post">
+            <div class="name_row">
+                <div><label for="name">Login</label> </div>
+                <input type="text" name="username" id="name">
+            </div>
 
-    <div class="input">
-        <label for="pass">Password</label>
-        <input type="password" name="password" id="pass">
-        <span class="spin"></span>
-    </div>
+            <div class="pass_row">
+                <div><label for="pass">Password</label></div>
+                <input type="password" name="password" id="pass">
+            </div>
 
-    <div class="input">
-        <label for="pass2">Confirm password</label>
-        <input type="password" name="password2" id="pass2">
-        <span class="spin"></span>
-    </div>
+            <div class="pass_row">
+                <div><label for="pass2">Confirm password</label></div>
+                <input type="password" name="password2" id="pass2">
+            </div>
 
-    <div class="button login">
-        <button><span>Create Account</span> <i class="fa fa-check"></i></button>
+            <div>
+                <button class="common_btn"><a>Create Account</a></button>
+            </div>
+        </form>
     </div>
-</form>
+</div>
+
 
 {{#each errors}}
     {{this.msg}}
