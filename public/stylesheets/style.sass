@@ -15,10 +15,9 @@ body, html
 
   header
     position: fixed
-    width: 98%
     top: 20px
     left: 20px
-    right: 100px
+    right: 20px
     z-index: 50
     box-shadow: 0 1px 6px rgba(0, 0, 0, .3)
 
@@ -30,7 +29,8 @@ body, html
   #header
     padding: 0 40px
     height: 60px
-    background: #171717
+    //background: #171717
+    background: #00C853
     border-radius: 4px
 
 
@@ -40,7 +40,9 @@ body, html
     display: block
     //https://see.fontimg.com/api/renderfont4/K71El/eyJyIjoiZnMiLCJoIjo2OSwidyI6MTAwMCwiZnMiOjY5LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/Q2hlbG92ZWs/jabin-medium-swash-2.png
     //https://see.fontimg.com/api/renderfont4/BXYx/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Q2hlbG92ZWs/feathergraphy-decoration.png
-    background-image: url('https://see.fontimg.com/api/renderfont4/K7WZX/eyJyIjoiZnMiLCJoIjo2OCwidyI6MTAwMCwiZnMiOjY4LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/Q2hlbG92ZWs/sicretmonopersonallight.png')
+    //background-image: url('https://see.fontimg.com/api/renderfont4/K7WZX/eyJyIjoiZnMiLCJoIjo2OCwidyI6MTAwMCwiZnMiOjY4LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/Q2hlbG92ZWs/sicretmonopersonallight.png')
+    //background-image: url("https://see.fontimg.com/api/renderfont4/qZMO6/eyJyIjoiZnMiLCJoIjo2OCwidyI6MTAwMCwiZnMiOjY4LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/QWdyb3NlbGw/roxale-story-calligraphy-italic.png")
+    background-image: url("https://see.fontimg.com/api/renderfont4/mLgrV/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/QWdyb3NlbGw/early-goal-demo-bold.png")
     height: 40px
     width: 140px
     background-size: contain
@@ -278,3 +280,80 @@ body, html
 
   #messages
     list-style-type: none
+
+  /*----------------DASHBOARD----------------*/
+
+  .div_logout
+    position: relative
+    margin: 0 auto
+    text-align: center
+
+  .a_logout
+    position: relative
+    top: 100px
+    color: #f5f5f5
+
+  .chat_list_box
+    padding: 10px 20px
+
+  .chat_list_user
+    margin: 10px 40% 8px 0
+    border-bottom: 1px solid darkgray
+
+  .chat_list_user a
+    display: block
+    width: 100%
+    color: white
+
+
+  /*----------------INDEX----------------*/
+
+  .main_container
+    position: relative
+    top: 100px
+    margin: 0 300px
+    padding: 4px
+    height: 80%
+    background-color: green
+
+  //.main_element
+  //  display: grid
+  //  grid-template-columns: 2fr 1fr
+  //  grid-gap: 16px
+  //
+  //.element_left
+  //  float: left
+  //  width: 300px
+  //  height: 200px
+  //
+  //.element_middle
+  //  display: inline-flex
+  //
+  //.element_right
+  //  float: right
+
+  .main_element
+    display: grid
+    gap: 20px
+    //grid-template-rows: 200px auto 100px
+    height: 200px
+    margin: 30px
+    grid-template-columns: 200px auto 200px
+
+  [class^="element_"]
+    background-color: skyblue
+    /* Размещаем контейнеры по центру */
+    display: grid
+    place-items: center
+
+
+  .order_logo
+    width: 200px
+    height: 200px
+    //background-image: url('https://see.fontimg.com/api/renderfont4/K7WZX/eyJyIjoiZnMiLCJoIjo2OCwidyI6MTAwMCwiZnMiOjY4LCJmZ2MiOiIjRkZGRkZGIiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/Q2hlbG92ZWs/sicretmonopersonallight.png')
+    //background-image: url('https://i.ytimg.com/vi/MXtLA4waKHA/default.jpg')
+
+  img
+    width: 200px
+    height: 200px
+    //background-image: url('https://i.ytimg.com/vi/MXtLA4waKHA/default.jpg')

@@ -1,11 +1,19 @@
-<p>My chats</p>
+<div class="container">
+    <div class="chat_container">
+        <div class="chat_list_box">
+            <h2 class="title">My chats</h2>
 
-{{#each companions}}
-   <div><a href="/chat/{{this.id}}.{{this.chatId}}">{{this.username}}</a></div>
-{{/each}}
+            {{#each companions}}
+                <div class="chat_list_user"><a href="/chat/{{this.id}}.{{this.chatId}}">{{this.username}}</a></div>
+            {{/each}}
 
-<p>Users</p>
+            <h2 class="title">Users</h2>
 
-{{#each users}}
-    <div><a href="/chat/new_chat/{{this.id}}">{{this.username}}</a></div>
-{{/each}}
+            {{#each users}}
+                <div class="chat_list_user"><a href="/chat/new_chat/{{this.id}}">{{this.username}}</a></div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+

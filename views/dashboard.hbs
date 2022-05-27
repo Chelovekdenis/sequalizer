@@ -1,1 +1,30 @@
-| <a href="/login/logout">Logout</a>
+<div class="container">
+    <div class="chat_container">
+        {{#each orders}}
+            <div class="main_element">
+                <div class="element_left">
+                    <img src="{{this.logo}}" alt=""/>
+                </div>
+                <div class="element_middle">
+                    <h2><a href="/order/{{this.id}}">{{this.product_name}}</a></h2>
+                    <h3>{{this.price}}</h3>
+                    <p>{{this.description}}</p>
+                </div>
+                <div class="element_right">
+                    <p>{{this.address}}</p>
+                    <p>{{this.last_login_time}}</p>
+                    <p>{{this.phone_number}}</p>
+                </div>
+            </div>
+            <form action="/dashboard/{{this.id}}" method="post">
+                <div>
+                    <button class="common_btn"><a>X</a></button>
+                </div>
+            </form>
+        {{/each}}
+
+        <div class="div_logout">
+            <a class="a_logout" href="/login/logout">Logout</a>
+        </div>
+    </div>
+</div>

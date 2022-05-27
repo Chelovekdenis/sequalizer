@@ -10,13 +10,12 @@ const session = require('express-session')
 const passport = require('passport')
 
 const indexRouter = require('./routes/index')
-const createRouter = require('./routes/create')
-const editRouter = require('./routes/edit')
-const deleteRouter = require('./routes/delete')
 const loginRouter = require('./routes/login')
 const registrationRouter = require('./routes/registration')
 const dashboardRouter = require('./routes/dashboard')
 const chatRouter = require('./routes/chat')
+const orderRouter = require('./routes/order')
+const placementRouter = require('./routes/placement')
 
 const app = express()
 
@@ -24,7 +23,15 @@ const {sessionSecret} = require('./config/config')
 
 require('./config/passport')(passport)
 
-// view engine setup
+// TODO
+// [+] В мойм профиле отображать все мои ордера
+// [+] Чтобы ордер в профиле можно было удалить
+// [+] Возможность написать человеку, который сделал ордер
+// [+] Поиск по товарам или услугам
+// [] Сделать все красивым
+// [+] Тесты (Моча)
+
+
 app.set('views', path.join(__dirname, 'views'))
 app.engine("hbs", expressHbs(
     {
@@ -56,7 +63,7 @@ app.use(cookieParser())
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
+  indentedSyntax: true,
   sourceMap: true
 }))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -65,13 +72,12 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/', indexRouter)
-app.use('/create', createRouter)
-app.use('/edit', editRouter)
-app.use('/delete', deleteRouter)
 app.use('/login', loginRouter)
 app.use('/registration', registrationRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/chat', chatRouter)
+app.use('/order', orderRouter)
+app.use('/placement', placementRouter)
 
 
 // catch 404 and forward to error handler

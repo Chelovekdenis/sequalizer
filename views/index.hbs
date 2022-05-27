@@ -1,41 +1,29 @@
-<h1>Список пользователей</h1>
-{{#if admin}}
-    {{admin}} {{admin}} {{admin}}
-{{/if}}
-<button id="button_add"><a id="a_add" href="/create">Добавить пользователя</a></button>
-<table>
-    <tr><th>Name</th><th>Prise</th><th>CompanyID</th><th></th></tr>
-    {{#each users}}
-        <tr>
-            <td>{{this.name}}</td>
-            <td>{{this.prise}}</td>
-            <td>{{this.companyId}}</td>
-            <td>
-            {{#if ../admin}}
-            <a href="/edit/{{this.id}}">Edit</a>|
-            <form action="delete/{{this.id}}" method="POST" style="display:inline;">
-                <input type="submit" value="Delete" />
-            </form>
-            {{/if}}
-            </td>
-        </tr>
+<div class="main_container">
+    <form action="/" method="post">
+        <div class="name_row">
+            <div><label for="desired">Поиск:</label></div>
+            <input type="text" name="desired" id="desired">
+        </div>
+        <div>
+            <button class="common_btn"><a>Найти</a></button>
+        </div>
+    </form>
+    {{#each orders}}
+        <div class="main_element">
+            <div class="element_left">
+                <img src="{{this.logo}}" alt=""/>
+            </div>
+            <div class="element_middle">
+                <h2><a href="/order/{{this.id}}">{{this.product_name}}</a></h2>
+                <h3>{{this.price}}</h3>
+                <p>{{this.description}}</p>
+            </div>
+            <div class="element_right">
+                <p>{{this.address}}</p>
+                <p>{{this.last_login_time}}</p>
+                <p>{{this.phone_number}}</p>
+            </div>
+        </div>
     {{/each}}
-</table>
-<table style="margin-left: 20px;">
-    {{#if companies}}
-        <tr><th>Id</th><th>Name</th><th></th></tr>
-    {{/if}}
-    {{#each companies}}
-        <tr>
-            <td>{{this.id}}</td>
-            <td>{{this.name}}</td>
-            <td>
-            {{#if ../admin}}
-                <form action="delete/company/{{this.id}}" method="POST" style="display:inline;">
-                    <input type="submit" value="Delete" />
-                </form>
-            {{/if}}
-            </td>
-        </tr>
-    {{/each}}
-</table>
+</div>
+

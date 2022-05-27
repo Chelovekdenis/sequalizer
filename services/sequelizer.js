@@ -7,22 +7,23 @@ const sequelize = new Sequelize(database, username, password, {
     define: {
         timestamps: false
     },
-    logging: false
+    logging: false,
 })
 
-const Product = require("../models/Product")(sequelize)
-const Company = require("../models/Company")(sequelize)
 const User = require("../models/User")(sequelize)
 const Chat = require("../models/Chat")(sequelize)
 const Relation = require("../models/Relation")(sequelize)
+const Order = require("../models/Order")(sequelize)
+const Orders_Relation = require("../models/Orders_Relation")(sequelize)
 
-Company.hasMany(Product, {onDelete: "cascade"})
+// Для создания таблицы в базе данных
+Orders_Relation.sync({force: true})
 
 User.belongsToMany(Chat, {through: Relation})
 Chat.belongsToMany(User, {through: Relation})
 
-module.exports.Product = Product
-module.exports.Company = Company
 module.exports.User = User
 module.exports.Chat = Chat
 module.exports.Relation = Relation
+module.exports.Order = Order
+module.exports.Orders_Realtion = Orders_Relation
