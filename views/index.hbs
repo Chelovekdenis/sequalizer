@@ -1,22 +1,31 @@
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <div class="main_container">
-    <form action="/" method="post">
-        <div class="name_row">
-            <div><label for="desired">Поиск:</label></div>
-            <input type="text" name="desired" id="desired">
-        </div>
-        <div>
-            <button class="common_btn"><a>Найти</a></button>
-        </div>
-    </form>
+    <div class="poisk">
+        <form action="/" method="post">
+            <!--        <div class="name_row">-->
+            <!--            <div><label for="desired">Поиск:</label></div>-->
+            <!--            <input type="text" name="desired" id="desired">-->
+            <!--        </div>-->
+            <!--        <div>-->
+            <!--            <button class="common_btn"><a>Найти</a></button>-->
+            <!--        </div>-->
+            <label>
+                <input type="text" name="desired" id="desired" placeholder="Искать здесь...">
+            </label>
+            <button type="submit">></button>
+        </form>
+    </div>
     {{#each orders}}
         <div class="main_element">
             <div class="element_left">
-                <img src="{{this.logo}}" alt=""/>
+                <img class="index_img" src="{{this.logo}}" alt=""/>
             </div>
             <div class="element_middle">
-                <h2><a href="/order/{{this.id}}">{{this.product_name}}</a></h2>
-                <h3>{{this.price}}</h3>
-                <p>{{this.description}}</p>
+                <div class="index_inline">
+                    <h2 class="f_left"><a href="/order/{{this.id}}">{{this.product_name}}</a></h2>
+                    <h2 class="f_right">{{this.price}}</h2>
+                </div>
+                <p class="description">{{this.description}}</p>
             </div>
             <div class="element_right">
                 <p>{{this.address}}</p>
@@ -26,4 +35,5 @@
         </div>
     {{/each}}
 </div>
+<script src="/javascripts/index_p_limiter.js"></script>
 

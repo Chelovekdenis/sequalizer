@@ -1,41 +1,54 @@
 <div class="materialContainer">
-    <div class="registration_box">
-        <div class="section_title">Create Your Account</div>
-        <form action="/placement" method="post">
-            <div class="name_row">
-                <div><label for="logo">Логотип</label></div>
-                <input type="text" name="logo" id="logo">
-            </div>
+    <div class="placement_box">
+        <div class="section_title">Разместите ваш товар или услугу</div>
+        <div class="grid_box">
+            <!--            <div class="left_column">-->
+            <form action="/placement" method="post">
+                <div class="grid_box">
+                    <div class="name_row">
+                        <div><label for="logo">Логотип</label></div>
+                        <input type="text" name="logo" id="p_logo">
+                    </div>
 
-            <div class="name_row">
-                <div><label for="name">Название</label></div>
-                <input type="text" name="product_name" id="name">
-            </div>
+                    <div class="d_name name_row">
+                        <div><label for="name">Название</label></div>
+                        <input type="text" name="product_name" id="p_name">
+                    </div>
 
-            <div class="name_row">
-                <div><label for="price">Цена</label></div>
-                <input type="text" name="price" id="price">
-            </div>
+                    <div class="name_row">
+                        <div><label for="price">Цена</label></div>
+                        <input type="text" name="price" id="p_price">
+                    </div>
 
-            <div class="name_row">
-                <div><label for="description">Описание</label> </div>
-                <input type="text" name="description" id="description">
-            </div>
+                    <div class="name_row">
+                        <div><label for="address">Адресс</label></div>
+                        <input type="text" name="address" id="p_address">
+                    </div>
 
-            <div class="name_row">
-                <div><label for="address">Адресс</label> </div>
-                <input type="text" name="address" id="address">
-            </div>
+                    <div class="name_row">
+                        <div><label for="phone_number">Номер телефона</label></div>
+                        <input type="text" name="phone_number" id="p_phone_number">
+                    </div>
 
-            <div class="name_row">
-                <div><label for="phone_number">Номер телефона</label> </div>
-                <input type="text" name="phone_number" id="phone_number">
-            </div>
+                    <div class="d_des name_row">
+                        <div><label for="description">Описание</label></div>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    </div>
 
+                    <div class="placement_btn">
+                        <div class="indent"></div>
+                        <button class=""><a class="knopka">Разместить</a></button>
+                        <div class="indent"></div>
+                    </div>
 
-            <div>
-                <button class="common_btn"><a>Разместить</a></button>
-            </div>
-        </form>
+                    <div class="preview_image">
+
+                    </div>
+                </div>
+            </form>
+            <!--            </div>-->
+            <!--            <div class="right_column">-->
+
+            <!--            </div>-->
+        </div>
     </div>
-</div>

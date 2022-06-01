@@ -15,11 +15,28 @@ async function takeInfo() {
     await socket.on('restoration messages', (chat_history) => {
         for (const item of chat_history.messages) {
             if (user_data.name === item.name) {
-                messages.append($('<li style="padding-left: 50%">')
-                    .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
-            } else
-                messages.append($('<li>')
-                    .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
+                let newElems = $("<ui class=\"chat_ui\"></ui>")
+                    .append(`<li><span class="companion_name">${item.name}</span><span class="dateandtime">${item.time} ${item.date}</span></li>`)
+                    .append(`<li>${item.text}</li><br>`)
+
+                messages.append(newElems)
+                // messages.append($('<ui style="padding-left: 50%">'))
+                // messages.append($('<li>')
+                //     .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
+                // messages.append($('</ui>'))
+                // messages.append($('<ui style="padding-left: 50%">')
+                //     .text(`<li><span class="companion_name">${item.name}</span><span class="dateandtime">${item.time} ${item.date}</span></li><li>${item.text}</li><br>`))
+                // messages.append($('<li style="padding-left: 50%">')
+                //     .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
+            } else {
+                let newElems = $("<ui></ui>")
+                    .append(`<li><span class="companion_name">${item.name}</span><span class="dateandtime">${item.time} ${item.date}</span></li>`)
+                    .append(`<li>${item.text}</li><br>`)
+                messages.append(newElems)
+            }
+                // .text(`<li><span class="companion_name">${item.name}</span><span class="dateandtime">${item.time} ${item.date}</span></li><li>${item.text}</li><br>`))
+                // messages.append($('<li>')
+                //     .text(`${item.name}: ${item.text}---${item.time}---${item.date}`))
 
         }
     })
@@ -39,8 +56,11 @@ $('form').on("submit", (e) => {
         date: `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
     }
 
-    messages.append($('<li style="padding-left: 50%;">')
-        .text(`${msg.name}: ${msg.text}---${msg.time}---${msg.date}`))
+    let newElems = $("<ui class=\"chat_ui\"></ui>")
+        .append(`<li><span class="companion_name">${msg.name}</span><span class="dateandtime">${msg.time} ${msg.date}</span></li>`)
+        .append(`<li>${msg.text}</li><br>`)
+
+    messages.append(newElems)
 
     socket.emit('chat message', msg)
     m.val('')
@@ -48,6 +68,9 @@ $('form').on("submit", (e) => {
 })
 
 socket.on('chat message client', (msg) => {
-    messages.append($('<li>')
-        .text(`${msg.name}: ${msg.text}---${msg.time}---${msg.date}`))
+    let newElems = $("<ui></ui>")
+        .append(`<li><span class="companion_name">${msg.name}</span><span class="dateandtime">${msg.time} ${msg.date}</span></li>`)
+        .append(`<li>${msg.text}</li><br>`)
+
+    messages.append(newElems)
 })

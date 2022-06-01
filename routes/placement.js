@@ -1,19 +1,20 @@
 const express = require('express')
 const router = express.Router()
 const model = require("../services/sequelizer");
-const { ensureAuthenticated } = require('../config/auth')
+const {ensureAuthenticated} = require('../config/auth')
 
 router.get("/", ensureAuthenticated, (req, res) => {
     res.render('placement.hbs', {
+        username: req.user.username,
         whichPartial: () => {
-            return "header"
+            return "header_authenticated"
         }
     })
 })
 
 // Еще в модель добавить id человек который разместил
 router.post("/", ensureAuthenticated, async (req, res) => {
-    const { logo, product_name, price, description, address, phone_number } = req.body
+    const {logo, product_name, price, description, address, phone_number} = req.body
     const user = await model.User.findOne({where: {username: req.user.username}})
 
     await model.Order.create({

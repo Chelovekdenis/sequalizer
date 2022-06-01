@@ -2,16 +2,22 @@
 body, html {
   padding: 0;
   margin: 0;
-  color: #171717;
+  color: #faf7f2;
   font-family: Roboto, serif;
-  background: #f5f5f5;
+  background: #faf7f2;
   height: 100%;
   /*----------------HEADER----------------*/
+  /*----------------FOOTER----------------*/
   /*----------------LOGIN----------------*/
   /*----------------REGISTRATION----------------*/
   /*----------------CHAT----------------*/
   /*----------------DASHBOARD----------------*/
-  /*----------------INDEX----------------*/ }
+  /*----------------INDEX----------------*/
+  /*----------------INDEX----------------*/
+  /* при наведении курсора мышки */
+  /* при нажатии */
+  /*----------------PLACEMENT----------------*/
+  /*----------------CHAT----------------*/ }
   body a, html a {
     text-decoration: none; }
   body header, html header {
@@ -27,7 +33,7 @@ body, html {
   body #header, html #header {
     padding: 0 40px;
     height: 60px;
-    background: #00C853;
+    background: #143628;
     border-radius: 4px; }
   body #header_logo, html #header_logo {
     margin-top: 10px;
@@ -61,6 +67,9 @@ body, html {
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 1px; }
+  body .footer, html .footer {
+    height: 100px;
+    margin-top: 50px; }
   body .materialContainer, html .materialContainer {
     position: relative;
     top: 100px;
@@ -75,7 +84,7 @@ body, html {
     padding: 14px;
     font-size: 14px;
     border-radius: 3px;
-    background: #202020;
+    background: #143628;
     color: #f5f5f5; }
   body .login_box_left, html .login_box_left {
     flex: 1; }
@@ -115,7 +124,7 @@ body, html {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     outline: none; }
-  body button a, html button a {
+  body .btn_a, html .btn_a {
     height: 100%;
     width: 100%;
     text-decoration: none;
@@ -155,7 +164,7 @@ body, html {
     padding: 14px;
     font-size: 14px;
     border-radius: 3px;
-    background: #202020;
+    background: #143628;
     color: #f5f5f5; }
   body .registration_box form input, html .registration_box form input {
     background-color: rgba(0, 0, 0, 0.2);
@@ -176,7 +185,7 @@ body, html {
     height: 100%;
     width: 550px;
     margin: 0 auto;
-    background-color: #202020;
+    background-color: #143628;
     color: #f5f5f5;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
     border-radius: 4px; }
@@ -217,13 +226,35 @@ body, html {
     margin: 0 20px; }
   body #messages, html #messages {
     list-style-type: none; }
+  body .dashboard_container, html .dashboard_container {
+    position: relative;
+    top: 100px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 80%;
+    width: 60%;
+    background-color: #143628;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    display: grid; }
+  body .elements_list, html .elements_list {
+    position: relative;
+    height: 92%; }
+  body .dashboard_element, html .dashboard_element {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin-bottom: 15px; }
+  body .dashboard_filling, html .dashboard_filling {
+    display: grid;
+    gap: 50px;
+    padding-left: 20px;
+    grid-template-columns: 2fr 1fr 4fr 1fr;
+    align-items: center; }
   body .div_logout, html .div_logout {
     position: relative;
     margin: 0 auto;
     text-align: center; }
   body .a_logout, html .a_logout {
-    position: relative;
-    top: 100px;
     color: #f5f5f5; }
   body .chat_list_box, html .chat_list_box {
     padding: 10px 20px; }
@@ -234,29 +265,204 @@ body, html {
     display: block;
     width: 100%;
     color: white; }
+  body .delete_btn, html .delete_btn {
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: orangered;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px; }
+  body .h2a, html .h2a {
+    color: white; }
   body .main_container, html .main_container {
     position: relative;
     top: 100px;
     margin: 0 300px;
-    padding: 4px;
-    height: 80%;
-    background-color: green; }
+    padding: 8px;
+    background: #143628;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3); }
   body .main_element, html .main_element {
     display: grid;
     gap: 20px;
     height: 200px;
     margin: 30px;
-    grid-template-columns: 200px auto 200px; }
+    grid-template-columns: 2fr 4fr 1fr;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    background: #143628;
+    padding: 10px 10px 40px; }
+  body .index_inline, html .index_inline {
+    display: grid;
+    grid-template-columns: 2fr 1fr; }
+  body .f_left, html .f_left {
+    float: left;
+    text-align: center; }
+  body .f_right, html .f_right {
+    float: right;
+    padding-left: 50px; }
   body [class^="element_"], html [class^="element_"] {
-    background-color: skyblue;
     /* Размещаем контейнеры по центру */
     display: grid;
-    place-items: center; }
+    place-items: center;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 8px;
+    background: #143628;
+    color: #f5f5f5; }
   body .order_logo, html .order_logo {
+    width: 320px;
+    height: 180px; }
+  body .index_img, html .index_img {
+    width: 280px;
+    height: 180px; }
+  body .element_middle h2 a, html .element_middle h2 a {
+    color: #f5f5f5; }
+  body .container1, html .container1 {
+    display: grid;
+    gap: 25px;
+    grid-template-rows: auto;
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    justify-content: center;
+    justify-items: stretch; }
+  body .griditem, html .griditem {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 10px;
+    background: #143628;
+    color: #f5f5f5; }
+  body .A, html .A {
+    grid-column: 1/3;
+    align-self: start; }
+  body .A h1, html .A h1 {
+    display: inline-block; }
+  body .h_right, html .h_right {
+    float: right;
+    margin-right: 50px; }
+  body .B, html .B {
+    align-self: start; }
+  body .C, html .C {
+    grid-column: 2/2;
+    grid-row: 2/4;
+    align-self: start;
+    display: grid;
+    grid-template-rows: 50px 50px 50px 50px;
+    gap: 40px; }
+  body .D .order_img, html .D .order_img {
+    min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 0; }
+  body a.knopka, html a.knopka {
+    margin: 0 auto;
+    color: #143628;
+    /* цвет текста */
+    text-decoration: none;
+    /* убирать подчёркивание у ссылок */
+    user-select: none;
+    /* убирать выделение текста */
+    background: linear-gradient(60deg, #B7FF90, #CCFF90);
+    padding: 1em 5em;
+    /* отступ от текста */
+    outline: none;
+    /* убирать контур в Mozilla */
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    text-align: center; }
+  body a.knopka:hover, html a.knopka:hover {
+    background: #e85f4c; }
+  body a.knopka:active, html a.knopka:active {
+    background: #980f00; }
+  body .poisk, html .poisk {
+    margin-top: 10px; }
+  body .poisk form, html .poisk form {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    background: #f5f5f5; }
+  body .poisk input, body button, html .poisk input, html button {
+    border: none;
+    outline: none;
+    background: transparent; }
+  body .poisk input, html .poisk input {
+    width: 100%;
+    height: 42px;
+    padding-left: 15px; }
+  body .poisk button, html .poisk button {
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer; }
+  body .poisk button:before, html .poisk button:before {
+    content: "\f002";
+    font-size: 16px;
+    color: #F9F0DA; }
+  body .indent, html .indent {
+    height: 10px; }
+  body #description, html #description {
+    margin-top: 5px;
+    width: 90%;
+    height: 278px;
+    resize: none;
+    font-size: 14px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid #000;
+    box-shadow: 1px 1px 0 #5f5f5f; }
+  body .placement_box, html .placement_box {
+    margin: 0 auto;
+    max-width: 70%;
+    flex-direction: row;
+    box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
+    padding: 14px;
+    font-size: 14px;
+    border-radius: 3px;
+    background: #143628;
+    color: #f5f5f5; }
+  body .placement_box form input, html .placement_box form input {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0 #5f5f5f;
+    width: 300px;
+    padding: 5px;
+    margin: 4px 0;
+    font-size: 16px; }
+  body .grid_box, html .grid_box {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px; }
+  body .d_name, html .d_name {
+    grid-row: 2/3;
+    grid-column: 1/2; }
+  body .d_des, html .d_des {
+    grid-row: 6/6;
+    grid-column: 1/3; }
+  body .preview_image, html .preview_image {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    grid-row: 1/6;
+    grid-column: 2/2; }
+  body .placement_btn, html .placement_btn {
+    margin-left: 45%;
+    grid-row: 7/7;
+    grid-column: 1/3; }
+  body .chat_ui, html .chat_ui {
+    float: right;
+    padding-left: 100%;
     width: 200px;
-    height: 200px; }
-  body img, html img {
-    width: 200px;
-    height: 200px; }
+    padding-right: 10px; }
+  body .companion_name, html .companion_name {
+    font-weight: bold; }
+  body .dateandtime, html .dateandtime {
+    font-size: 15px;
+    color: lightgray;
+    margin-left: 5px; }
 
 /*# sourceMappingURL=style.css.map */

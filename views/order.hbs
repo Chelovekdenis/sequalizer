@@ -1,10 +1,21 @@
 <div class="main_container">
-    <h1><a href="/chat/new_chat/{{userId}}">Написать</a></h1>
-    <h1>{{logo}}</h1>
-    <h1>{{product_name}}</h1>
-    <h1>{{price}}</h1>
-    <h1>{{description}}</h1>
-    <h1>{{address}}</h1>
-    <h1>{{last_login_time}}</h1>
-    <h1>{{phone_number}}</h1>
+    <div class="container1">
+        <div class="griditem A">
+            <h1>{{product_name}}</h1>
+            <h1 class="h_right">{{price}}</h1>
+        </div>
+        <div class="griditem B">
+            <img class="order_img" src="{{logo}}" alt="">
+        </div>
+        <div class="griditem C">
+            <a class="knopka" href="/chat/new_chat/{{userId}}">Написать</a>
+            <h1>{{phone_number}}</h1>
+            <h1>Адрес: {{address}}</h1>
+            <div class="indent"></div>
+            <h1>Был в сети: {{last_login_time}}</h1>
+        </div>
+        <div class="griditem D">
+            <h1>{{description}}</h1>
+        </div>
+    </div>
 </div>

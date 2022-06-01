@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
     if (req.isAuthenticated())
         res.render("index.hbs", {
             orders: orders_list,
+            username: req.user.username,
             whichPartial: () => {
                 return "header_authenticated"
             }
