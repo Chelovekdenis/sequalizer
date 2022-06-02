@@ -1,3 +1,4 @@
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <div class="dashboard_container">
     <div class="">
         <div class="elements_list">
@@ -6,7 +7,7 @@
                     <div class="dashboard_filling">
                         <div><h2><a class="h2a" href="/order/{{this.id}}">{{this.product_name}}</a></h2></div>
                         <div>{{this.price}}</div>
-                        <div>{{this.description}}</div>
+                        <p class="db_description">{{this.description}}</p>
                         <div>
                             <form action="/dashboard/{{this.id}}" method="post">
                                 <div>
@@ -25,3 +26,4 @@
         </div>
     </div>
 </div>
+<script src="/javascripts/dashboard_limiter.js"></script>

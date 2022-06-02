@@ -102,8 +102,6 @@ body, html {
     text-transform: uppercase;
     letter-spacing: 1px;
     padding-bottom: 5px; }
-  body .name_row, html .name_row {
-    padding-bottom: 18px; }
   body .pass_row, html .pass_row {
     padding-bottom: 18px; }
   body .login_box div form div input, html .login_box div form div input {
@@ -286,22 +284,24 @@ body, html {
   body .main_element, html .main_element {
     display: grid;
     gap: 20px;
-    height: 200px;
+    min-height: 200px;
     margin: 30px;
     grid-template-columns: 2fr 4fr 1fr;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
     border-radius: 6px;
     background: #143628;
-    padding: 10px 10px 40px; }
+    padding: 10px; }
   body .index_inline, html .index_inline {
     display: grid;
-    grid-template-columns: 2fr 1fr; }
+    grid-template-columns: 2fr 1fr;
+    width: 100%; }
   body .f_left, html .f_left {
     float: left;
     text-align: center; }
   body .f_right, html .f_right {
     float: right;
-    padding-left: 50px; }
+    text-align: right;
+    padding-right: 20px; }
   body [class^="element_"], html [class^="element_"] {
     /* Размещаем контейнеры по центру */
     display: grid;
@@ -319,11 +319,20 @@ body, html {
     height: 180px; }
   body .element_middle h2 a, html .element_middle h2 a {
     color: #f5f5f5; }
+  body .main_container1, html .main_container1 {
+    position: relative;
+    top: 100px;
+    margin: 0 auto;
+    width: 50%;
+    padding: 8px;
+    background: #143628;
+    border-radius: 6px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3); }
   body .container1, html .container1 {
     display: grid;
     gap: 25px;
     grid-template-rows: auto;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-auto-rows: minmax(100px, auto);
     justify-content: center;
     justify-items: stretch; }
@@ -348,11 +357,17 @@ body, html {
     grid-row: 2/4;
     align-self: start;
     display: grid;
-    grid-template-rows: 50px 50px 50px 50px;
-    gap: 40px; }
-  body .D .order_img, html .D .order_img {
-    min-width: 100%;
-    min-height: 100%;
+    grid-template-rows: auto;
+    gap: 14px; }
+  body .C h2, html .C h2 {
+    margin: 0 auto; }
+  body .order_img, html .order_img {
+    max-width: 640px;
+    max-height: 360px;
+    flex-shrink: 0; }
+  body .order_img2, html .order_img2 {
+    max-width: 640px;
+    max-height: 360px;
     flex-shrink: 0; }
   body a.knopka, html a.knopka {
     margin: 0 auto;
@@ -404,8 +419,8 @@ body, html {
     height: 10px; }
   body #description, html #description {
     margin-top: 5px;
-    width: 90%;
-    height: 278px;
+    width: 100%;
+    height: 250px;
     resize: none;
     font-size: 14px;
     border-radius: 3px;
@@ -415,7 +430,7 @@ body, html {
     box-shadow: 1px 1px 0 #5f5f5f; }
   body .placement_box, html .placement_box {
     margin: 0 auto;
-    max-width: 70%;
+    max-width: 80%;
     flex-direction: row;
     box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.2);
     padding: 14px;
@@ -435,22 +450,18 @@ body, html {
     font-size: 16px; }
   body .grid_box, html .grid_box {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px; }
-  body .d_name, html .d_name {
-    grid-row: 2/3;
-    grid-column: 1/2; }
   body .d_des, html .d_des {
     grid-row: 6/6;
     grid-column: 1/3; }
   body .preview_image, html .preview_image {
     width: 100%;
     height: 100%;
-    background-color: red;
     grid-row: 1/6;
-    grid-column: 2/2; }
+    grid-column: 2/3; }
   body .placement_btn, html .placement_btn {
-    margin-left: 45%;
+    margin-left: 40%;
     grid-row: 7/7;
     grid-column: 1/3; }
   body .chat_ui, html .chat_ui {

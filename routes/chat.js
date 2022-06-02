@@ -68,8 +68,9 @@ router.get("/", async (req, res) => {
 
 
 router.get("/new_chat/:id", async (req, res) => {
-    console.log(req.params.id)
-    console.log(req.user.username)
+    // console.log(req.params.id)
+    // console.log(req.user.username)
+    console.log("Новый чат")
 
     const companion = await model.User
         .findOne({where: {id: req.params.id}})
@@ -94,11 +95,11 @@ router.get("/new_chat/:id", async (req, res) => {
     }
 
     if (targetChat != null) {
-        console.log(`IF`)
+        // console.log(`IF`)
         chat.id = targetChat.chatId
     }
     else {
-        console.log(`ELSE`)
+        // console.log(`ELSE`)
         let date = new Date()
 
         chat = await model.Chat.create({
@@ -114,7 +115,7 @@ router.get("/new_chat/:id", async (req, res) => {
         await companion.addChat(chat)
     }
 
-    console.log(`${companion.id} == ${chat.id}`)
+    // console.log(`${companion.id} == ${chat.id}`)
 
     res.redirect(`/chat/${companion.id}.${chat.id}`)
 })
